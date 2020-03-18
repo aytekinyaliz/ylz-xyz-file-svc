@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    flux.weave.works/automated: "true"
+  name: ylz-xyz-file-svc
+  labels:
+    name: ylz-xyz-file-svc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: ylz-xyz-file-svc
+    spec:
+      containers:
+      - name: ylz-xyz-file-svc
+        image: gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:c7dab805f0f4a278446c2459bcfddb24aa4e59a1
