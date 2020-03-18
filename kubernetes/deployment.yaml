@@ -15,4 +15,5 @@ spec:
     spec:
       containers:
       - name: ylz-xyz-file-svc
-        image: gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:c7dab805f0f4a278446c2459bcfddb24aa4e59a1
+        image: gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:94da0ed1a685faa741bc71b4fa56b477c9ed23f2
+        # image: gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:$SHORT_SHA
