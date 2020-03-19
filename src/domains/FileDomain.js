@@ -5,7 +5,9 @@ class FileDomain {
   async query({ projectId }) {
     const files = await fileRepositoryInstance.getAll();
 
-    console.log(files);
+    if(projectId === '*') {
+      return files;
+    }
 
     const result = [];
     files.forEach(file => {
