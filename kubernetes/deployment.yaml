@@ -1,19 +1,91 @@
-apiVersion: apps/v1beta1
-kind: Deployment
+apiVersion: "apps/v1"
+kind: "Deployment"
 metadata:
-  annotations:
-    flux.weave.works/automated: "true"
-  name: ylz-xyz-file-svc
+  name: "ylz-xyz-file-svc"
+  namespace: "default"
   labels:
-    name: ylz-xyz-file-svc
+    app: "ylz-xyz-file-svc"
 spec:
-  replicas: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "ylz-xyz-file-svc"
   template:
     metadata:
       labels:
-        name: ylz-xyz-file-svc
+        app: "ylz-xyz-file-svc"
     spec:
       containers:
-      - name: ylz-xyz-file-svc
-        image: gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:94da0ed1a685faa741bc71b4fa56b477c9ed23f2
-        # image: gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:$SHORT_SHA
+      - name: "ylz-xyz-file-svc-1"
+        image: "gcr.io/ylz-xyz-infra/github.com/aytekinyaliz/ylz-xyz-file-svc:123daa2"
+        env:
+        - name: "API_PREFIX"
+          valueFrom:
+            configMapKeyRef:
+              key: "API_PREFIX"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "NODE_ENV"
+          valueFrom:
+            configMapKeyRef:
+              key: "NODE_ENV"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "PORT"
+          valueFrom:
+            configMapKeyRef:
+              key: "PORT"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_TYPE"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_TYPE"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_PROJECT_ID"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_PROJECT_ID"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_PRIVATE_KEY_ID"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_PRIVATE_KEY_ID"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_PRIVATE_KEY"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_PRIVATE_KEY"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_CLIENT_EMAIL"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_CLIENT_EMAIL"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_CLIENT_ID"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_CLIENT_ID"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_AUTH_URI"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_AUTH_URI"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_TOKEN_URI"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_TOKEN_URI"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_AUTH_PROVIDER_X509_CERT_URL"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_AUTH_PROVIDER_X509_CERT_URL"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIRESTORE_CLIENT_X509_CERT_URL"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIRESTORE_CLIENT_X509_CERT_URL"
+              name: "ylz-xyz-file-svc-config-bztl"
+        - name: "FIREBASE_STORAGE_BUCKET"
+          valueFrom:
+            configMapKeyRef:
+              key: "FIREBASE_STORAGE_BUCKET"
+              name: "ylz-xyz-file-svc-config-bztl"
