@@ -22,6 +22,4 @@ const config = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 };
 
-// console.log('CONFIGURATIONS:', config);
-
 module.exports = config;
